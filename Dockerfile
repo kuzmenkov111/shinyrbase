@@ -61,8 +61,6 @@ RUN apt-get update && apt-get install -y \
     libnlopt-dev \
     build-essential
 
-COPY Makeconf /usr/lib64/microsoft-r/3.3/lib64/R/etc/Makeconf
-
 #RUN sudo R CMD javareconf
 
 
@@ -126,7 +124,7 @@ RUN R -e "install.packages(c('shiny'), repos='http://cran.rstudio.com/')" \
 && R -e "install.packages('radarchart', repos='https://cran.r-project.org/')" \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('hrbrmstr/qrencoder')\""
 
-COPY Rprofile.site /usr/lib64/microsoft-r/3.3/lib64/R/etc/
+COPY Rprofile.site /usr/lib64/R/etc/
 
 
 
