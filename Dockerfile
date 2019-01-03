@@ -25,21 +25,11 @@ RUN apt-get update \
 
 WORKDIR /home/docker
 
-# Download, valiate, and unpack and install Micrisift R open
-RUN wget  https://www.dropbox.com/s/xrkzdhm1cq0ll1q/microsoft-r-open-3.3.2.tar.gz?dl=1 -O microsoft-r-open-3.3.2.tar.gz \
-&& echo "817aca692adffe20e590fc5218cb6992f24f29aa31864465569057534bce42c7 microsoft-r-open-3.3.2.tar.gz" > checksum.txt \
-    && sha256sum -c --strict checksum.txt \
-    && tar -xf microsoft-r-open-3.3.2.tar.gz \
-    && cd /home/docker/microsoft-r-open \
-    && ./install.sh -a -u \
-    && ls logs && cat logs/*
-
-
-# Clean up
-WORKDIR /home/docker
-RUN rm microsoft-r-open-3.3.2.tar.gz \
-	&& rm checksum.txt \
-&& rm -r microsoft-r-open
+# Download, valiate, and unpack and install R 3.5.2
+RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
+&& add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/' \
+&& apt-get update -y
+RUN sudo apt-get update install r-base
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
