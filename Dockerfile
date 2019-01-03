@@ -26,10 +26,9 @@ RUN apt-get update \
 WORKDIR /home/docker
 
 # Download, valiate, and unpack and install R 3.5.2
-RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
-&& add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/' \
-&& apt-get update -y
-RUN sudo apt-get update install r-base
+RUN sudo deb https://cloud.r-project.org/bin/linux/ubuntu trusty/ \
+&& sudo apt-get update -y
+RUN sudo apt-get install r-base
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
