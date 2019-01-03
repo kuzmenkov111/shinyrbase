@@ -60,8 +60,8 @@ RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D6
 WORKDIR /home/docker
 
 # Download, valiate, and unpack and install R 3.5.2
-RUN deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/ \
-&& sudo apt-get update -y
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/" | sudo tee /etc/apt/sources.list
+RUN sudo apt-get update -y
 RUN sudo apt-get install r-base
 
 #RUN sudo R CMD javareconf
