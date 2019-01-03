@@ -62,10 +62,10 @@ WORKDIR /home/docker
 
 # Download, valiate, and unpack and install R 3.5.2
 #RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/" | sudo tee /etc/apt/sources.list
-RUN sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/'
+RUN sudo add-apt-repository -y 'deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/'
 RUN sudo apt-get update -y
-RUN sudo apt-get install r-base \
-&& apt-get install r-base-dev
+RUN sudo apt-get install -y r-base \
+&& apt-get install -y r-base-dev
 
 #RUN sudo R CMD javareconf
 RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
