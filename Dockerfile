@@ -22,15 +22,7 @@ RUN apt-get update \
         wget \
 	&& rm -rf /var/lib/apt/lists/*
 	
-RUN sudo apt-get install -y software-properties-common
-RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 
-WORKDIR /home/docker
-
-# Download, valiate, and unpack and install R 3.5.2
-RUN sudo deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/ \
-&& sudo apt-get update -y
-RUN sudo apt-get install r-base
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
@@ -61,6 +53,16 @@ RUN apt-get update && apt-get install -y \
     openjdk-7-jdk \
     libnlopt-dev \
     build-essential
+
+RUN sudo apt-get install -y software-properties-common
+RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+WORKDIR /home/docker
+
+# Download, valiate, and unpack and install R 3.5.2
+RUN deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/ \
+&& sudo apt-get update -y
+RUN sudo apt-get install r-base
 
 #RUN sudo R CMD javareconf
 RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
