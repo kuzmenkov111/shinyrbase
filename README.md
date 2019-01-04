@@ -1,6 +1,4 @@
-# mro
-Docker container with Microsoft R open 3.2.2 and shiny package for running shiny app.
+# R 3.5.2
+Basic Docker container with R 3.5.2 and shiny package for running shiny app.
 
-docker pull kuzmenkov/mro
-
-for runinng your shiny app mout it by using: -v /path to your app :/root/monap/
+This container is basic for future container, f.e. kuzmenkov111/shinyr
