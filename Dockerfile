@@ -57,6 +57,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN sudo apt-get install -y software-properties-common
 RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+RUN sudo apt-get update -y \
+&& apt-get install -y gcc-4.9
 
 WORKDIR /home/docker
 
