@@ -42,7 +42,6 @@ RUN apt-get update && apt-get install -y \
 # system library dependency for the euler app
 RUN apt-get update && apt-get install -y \
     libmpfr-dev \
-    gfortran-4.9 \
     gfortran \
     aptitude \
     libgdal-dev \
@@ -63,6 +62,7 @@ RUN sudo apt-get update -y \
 && apt-get install -y gcc-4.9 g++-4.9 \
 && update-alternatives --install -y /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
 RUN sudo update-alternatives --config gcc
+RUN sudo apt-get install -y gfortran-4.9
 RUN sudo update-alternatives --install -y /usr/bin/gfortran gfortran /usr/bin/gfortran-4.9 60
 RUN sudo update-alternatives --config gfortran
 
