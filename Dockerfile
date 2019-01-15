@@ -22,8 +22,6 @@ RUN apt-get update \
         wget \
 	&& rm -rf /var/lib/apt/lists/*
 	
-
-
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
     sudo \
@@ -83,8 +81,6 @@ RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
 RUN apt-get update
 RUN apt-get install -y libudunits2-dev libgdal-dev libgeos-dev 
 
-
-
 # basic shiny functionality
 RUN R -e "install.packages('shiny', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('rmarkdown', repos='https://cran.r-project.org/')" \
@@ -119,7 +115,4 @@ RUN R -e "install.packages('shiny', repos='https://cran.r-project.org/')" \
 && sudo su - -c "R -e \"options(unzip = 'internal'); remotes::install_github('kuzmenkov111/highcharter')\"" 
 
 #COPY Rprofile.site /usr/lib64/R/etc/
-
-
-
 EXPOSE 3838
