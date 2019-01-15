@@ -118,7 +118,7 @@ RUN R -e "install.packages('shiny', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('purrr', repos='https://cran.r-project.org/')" \
 && sudo su - -c "R -e \"options(unzip = 'internal'); remotes::install_github('kuzmenkov111/highcharter')\"" 
 
-COPY Rprofile.site /usr/lib64/R/etc/
+#COPY Rprofile.site /usr/lib64/R/etc/
 
 
 
